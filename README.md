@@ -11,17 +11,15 @@ This project aims to streamline and enhance mess-related processes within an edu
 *Technologies Used:*
 - Frontend: HTML, CSS, JavaScript, React
 - Backend: Node.js, Express.js
-- Database: MySQL
+- Database: MySQL + MongoDB
 - Security: HTTPS, JWT (JSON Web Token) or Google Auth
 
 *System Requirements:*
 - Operating System: Windows, macOS, Linux
 - Web Browser: Latest versions of major browsers
-- Database Management: MySQL
+- Database Management: MySQL + MongoDB
 - Server: Node.js, Express.js
 
 *Evolutionary Model Overview:*
 The project follows an Evolutionary Model, with iterative development cycles driven by continuous feedback from stakeholders. The process involves delivering incremental versions, eliciting customer feedback, incorporating suggestions, and delivering a refined final version. The model ensures adaptability to evolving requirements and promotes reduced planning overhead, aligning with agile development practices.
 
-*GitHub Repository Description:*
-Efficient Mess Management System for educational institutions, promoting transparency, communication, and user satisfaction. Developed using HTML, CSS, JavaScript, React, Node.js, and MySQL. Follows an Evolutionary Model for iterative development and continuous refinement based on user feedback.
