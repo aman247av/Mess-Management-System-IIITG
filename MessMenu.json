@@ -1,0 +1,196 @@
+[
+    {
+        "day": "Monday",
+        "breakfast": {
+            "time": "7:30 AM - 9:00 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "Suji halwa",
+            "main": "Paav - Bhaji"
+        },
+        "lunch": {
+            "time": "12:00 PM - 2:00 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Moong Dal fry",
+            "veg1": "Kabuli Chana",
+            "veg2": "Aloo Paalak",
+            "addons": "Curd/ Raita",
+            "more": "Salad"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Dal Tadka(Chana Dal)",
+            "nonVegOrVeg": "Onion Egg curry(1pc) / Kadai Paneer",
+            "veg": "Capsicum+Tomato + Onion + Aloo",
+            "addons": "Rasgulla"
+        }
+    },
+    {
+        "day": "Tuesday",
+        "breakfast": {
+            "time": "7:30 AM - 9:00 AM",
+            "hotBeverage": "Milk Tea + Bournvita milk",
+            "addons": "1 Banana",
+            "main": "Bread Jam + 1 Butter + 2 Cheese Pakoda/ 1 Boil egg"
+        },
+        "lunch": {
+            "time": "12:00 PM - 2:00 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Masoor Dal",
+            "veg1": "Cauliflower +Bean+ Aloo sabji",
+            "veg2": "Dum Aloo",
+            "addons": "Curd",
+            "more": "Salad"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain+ Fried Rice",
+            "dal": "Chana Dal",
+            "nonVegOrVeg": "Fish Curry / Paneer Butter Masala",
+            "veg": "4 Parvel Fry/Brinjal Fry/Aloo-onion fry",
+            "addons": "Cold Custard"
+        }
+    },
+    {
+        "day": "Wednesday",
+        "breakfast": {
+            "time": "7:30 AM - 9:00 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "Suji Halwa(in ghee)",
+            "main": "Masala Dosa + Coconut Chutney + Sambhar"
+        },
+        "lunch": {
+            "time": "12:00 PM - 2:00 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Daal Makhni",
+            "veg1": "Aloo Pitika",
+            "veg2": "Rajma Gravy",
+            "addons": "Raita",
+            "more": "Salad, Papad"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice + Biryani",
+            "dal": "Moong Dal",
+            "nonVegOrVeg": "Chicken Masala / Matar Paneer",
+            "veg": "Jeera Aloo",
+            "addons": "Sewai(Dry Fruits)"
+        }
+    },
+    {
+        "day": "Thursday",
+        "breakfast": {
+            "time": "7:30 AM - 9:00 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "1 Banana",
+            "main": "Bread + Jam + Veg Chowmein"
+        },
+        "lunch": {
+            "time": "12:00 PM - 2:00 PM",
+            "roti": "Aloo Paratha",
+            "rice": "Plain Rice + Lemon Rice",
+            "dal": "Arhar Dal",
+            "veg1": "Manchurian dry",
+            "veg2": "Aloo Green Matar Gravy",
+            "addons": "Curd",
+            "more":"Salad"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Methi Puri",
+            "rice": "Plain Rice",
+            "dal": "Sambhar Dal",
+            "nonVegOrVeg": "Egg Curry / Special Mix Veg (Paneer mixed)",
+            "veg": "Chana Chhole Mix Sabji",
+            "addons": "Gulab Jamun"
+        }
+    },
+    {
+        "day": "Friday",
+        "breakfast": {
+            "time": "7:30 AM - 9:00 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "Half Apple",
+            "main": "Uttapam + Sambhar + Coconut Chutney + Macroni"
+        },
+        "lunch": {
+            "time": "12:00 PM - 2:00 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Daal Makhni",
+            "veg1": "Cabbage + Aloo dry fry",
+            "veg2": "Potato+Black Chana Sabji",
+            "addons": "Aloo Raita",
+            "more": "Salad, Seem-Aloo"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain + Tomato Rice",
+            "dal": "Mix Dal",
+            "nonVegOrVeg": "Fish Curry / Sev-Tomato / Navratna Korma",
+            "veg": "Aloo Cabbage Fry",
+            "addons": "Suji Halwa (In Ghee)"
+        }
+    },
+    {
+        "day": "Saturday",
+        "breakfast": {
+            "time": "8:00 AM - 9:30 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "",
+            "main": "Puri Chana Sabji"
+        },
+        "lunch": {
+            "time": "12:30 PM - 2:00 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Dal Tadka(Chana Dal)",
+            "veg1": "Brinjal Aloo",
+            "veg2": "Soyabean Chana Masala",
+            "addons": "Salad, Rice chips"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice",
+            "dal": "Dal Tadka(Chana Dal)",
+            "nonVegOrVeg": "Egg Dry Gravy",
+            "veg": "Aloo Cabbage Fry",
+            "addons": "Veg Pakora(Cabbage)"
+        }
+    },
+    {
+        "day": "Sunday",
+        "breakfast": {
+            "time": "8:00 AM - 9:30 AM",
+            "hotBeverage": "Milk Tea + Coffee",
+            "addons": "",
+            "main": "Masala Dosa"
+        },
+        "lunch": {
+            "time": "12:30 PM - 2:00 PM",
+            "roti": "Aloo Paratha",
+            "rice": "Plain Rice",
+            "dal": "Arhar Dal",
+            "veg1": "Aloo",
+            "veg2": "Chana",
+            "addons": "Salad"
+        },
+        "dinner": {
+            "time": "7:30 PM - 9:30 PM",
+            "roti": "Chapati",
+            "rice": "Plain Rice + Veg Biryani",
+            "dal": "Arhar Dal",
+            "nonVegOrVeg": "Butter - Chicken",
+            "veg": "Mix Sabji",
+            "addons": "Rice Kheer"
+        }
+    }
+]

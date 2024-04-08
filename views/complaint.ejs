@@ -1,0 +1,242 @@
+<style>
+    .complaint {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .complaint h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .complaint p {
+        margin: 0;
+        color: #666;
+    }
+
+    img {
+        width: 100%;
+    }
+</style>
+<div class="container">
+    <div id="complaints-container"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <h2>Update Complaint</h2>
+            <form id="updateComplaintForm">
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="Pending">Pending</option>
+                    <option value="InProgress">InProgress</option>
+                    <option value="Resolved">Resolved</option>
+                </select><br><br>
+                <label for="severity">Severity:</label>
+                <select id="severity" name="severity">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Not Reviewed">Not Reviewed</option>
+                </select><br><br>
+                <label for="assignedTo">Assigned To:</label>
+                <select id="assignedTo" name="assignedTo">
+                    <option value="Committee">Committee</option>
+                    <option value="Admin">Admin</option>
+                </select><br><br>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const complaintsContainer = document.getElementById('complaints-container');
+
+    // Function to fetch complaints
+    async function fetchComplaints() {
+        try {
+            const response = await fetch('/complaints/showComplaints', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getCookie('jwt')}` // Get JWT token from cookies
+                }
+            });
+            const data = await response.json();
+            console.log(data);
+            if (!data.complaints) {
+                throw new Error('No complaints found');
+            }
+            return data.complaints;
+        } catch (error) {
+            console.error('Error fetching complaints:', error);
+            return null;
+        }
+    }
+    const role = decodeJWT(getCookie('jwt')).role;
+    // Function to get cookie by name
+    function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName.trim() === name) {
+                return cookieValue;
+            }
+        }
+        return null;
+    }
+
+    function decodeJWT(token) {
+        const [, payloadBase64] = token.split('.');
+        const payload = JSON.parse(atob(payloadBase64));
+        console.log(payload);
+        return payload;
+    }
+
+    const modal = document.getElementById('myModal');
+    const closeModal = document.getElementById('close')
+    
+    closeModal.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+
+
+    // Render complaints
+    async function renderComplaints() {
+        const complaints = await fetchComplaints();
+        if (!complaints) {
+            console.error('Failed to fetch complaints');
+            return;
+        }
+        console.log(complaints);
+
+        complaints.forEach(complaint => {
+            const complaintDiv = document.createElement('div');
+            complaintDiv.classList.add('complaint');
+
+            const title = document.createElement('h3');
+            title.textContent = `Complaint by ${complaint.user.name}`;
+            complaintDiv.appendChild(title);
+
+            const rollnumber = document.createElement('p');
+            rollnumber.textContent = `Roll Number: ${complaint.user.rollnumber}`;
+            complaintDiv.appendChild(rollnumber);
+
+            const description = document.createElement('p');
+            description.textContent = `Description: ${complaint.description}`;
+            complaintDiv.appendChild(description);
+
+            const status = document.createElement('p');
+            status.textContent = `Status: ${complaint.status}`;
+            complaintDiv.appendChild(status);
+
+            const severity = document.createElement('p');
+            severity.textContent = `Severity: ${complaint.severity}`;
+            complaintDiv.appendChild(severity);
+
+            if (complaint.photo) {
+                const photo = document.createElement('img');
+                photo.src = complaint.photo;
+                complaintDiv.appendChild(photo);
+            }
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', async () => {
+                try {
+                    const response = await fetch(`/complaints/deleteComplaint/${complaint._id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${getCookie('jwt')}`
+                        }
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        console.log(data.message);
+                        // Remove the complaint from the UI
+                        complaintDiv.remove();
+                    } else {
+                        console.error('Failed to delete complaint:', data.error);
+                    }
+                } catch (error) {
+                    console.error('Error deleting complaint:', error);
+                }
+            });
+            complaintDiv.appendChild(deleteBtn);
+            
+
+            if (role !== 'student') {
+                const updateBtn = document.createElement('button');
+                updateBtn.textContent = 'Update';
+                updateBtn.addEventListener('click', () => {
+                    // Open the modal
+                    modal.style.display = 'block';
+
+                    // Get the form element
+                    const form = document.getElementById('updateComplaintForm');
+
+                    // Reset the form
+                    form.reset();
+
+                    document.getElementById('status').value = complaint.status;
+                    document.getElementById('severity').value = complaint.severity;
+                    document.getElementById('assignedTo').value = complaint.assignedTo;
+
+                    // Add event listener for form submission
+                    form.addEventListener('submit', async function (event) {
+                        event.preventDefault();
+
+                        // Prefill the form with existing complaint data
+                        const status = document.getElementById('status').value;
+                        const severity = document.getElementById('severity').value;
+                        const assignedTo = document.getElementById('assignedTo').value;
+
+                        console.log(status, severity, assignedTo);
+                        const jsonData = {
+                            status: status,
+                            severity: severity,
+                            assignedTo: assignedTo
+                        };
+                        const jsonString = JSON.stringify(jsonData);
+
+
+
+                        const response = await fetch(`/complaints/updateComplaint/${complaint._id}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Authorization': `Bearer ${getCookie('jwt')}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: jsonString
+                        });
+                        const data = await response.json();
+
+                        if (response.ok) {
+                            console.log('Complaint updated successfully');
+                            // Close the modal
+                            modal.style.display = 'none';
+                        } else {
+                            console.error('Failed to update complaint:', data.error);
+                        }
+                    });
+                });
+
+                complaintDiv.appendChild(updateBtn);
+            }
+
+            complaintsContainer.appendChild(complaintDiv);
+        });
+    }
+
+
+
+    renderComplaints();
+</script>

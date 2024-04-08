@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="menu-item">
+            <h4>Breakfast</h4>
+            <p>Monday: Idli, Dosa, Sambar</p>
+            <p>Tuesday: Upma, Poha, Chutney</p>
+            <p>Wednesday: Paratha, Curd, Pickle</p>
+            <p>Wednesday: Paratha, Curd, Pickle</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="menu-item lunchtime">
+            <h4>Lunch</h4>
+            <p>Monday: Rice , Dal, Sabzi, Roti</p>
+            <p>Tuesday: Pulao, Rajma, Salad</p>
+            <p>Wednesday: Biryani, Raita, Salad</p>
+            <p>Monday: Rice , Dal, Sabzi, Roti</p>
+            <p>Tuesday: Pulao, Rajma, Salad</p>
+            <p>Wednesday: Biryani, Raita, Salad</p>
+            <p>Monday: Rice , Dal, Sabzi, Roti</p>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="menu-item dinnertime">
+            <h4>Lunch</h4>
+            <p>Monday: Rice, Dal, Sabzi, Roti</p>
+            <p>Tuesday: Pulao, Rajma, Salad</p>
+            <p>Wednesday: Biryani, Raita, Salad</p>
+            <p>Monday: Rice, Dal, Sabzi, Roti</p>
+            <p>Tuesday: Pulao, Rajma, Salad</p>
+            <p>Wednesday: Biryani, Raita, Salad</p>
+            <p>Monday: Rice, Dal, Sabzi, Roti</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Function to fetch menu data
+async function fetchMenu(day) {
+    try {
+        const response = await fetch(`http://127.0.0.1:3000/menu/showMenu/${day}`);
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message);
+        }
+        return data.data;
+    } catch (error) {
+        console.error('Error fetching menu:', error.message);
+        return null;
+    }
+}
+
+// Function to render menu data
+function renderMenu(menu) {
+    if (!menu) {
+        console.error('No menu data to render');
+        return;
+    }
+
+    console.log(menu.lunch.time);
+
+    document.querySelector('.menu-item h4').innerText = "Breakfast";
+    document.querySelector('.menu-item p:nth-of-type(1)').innerText = `Time: ${menu.breakfast.time}`;
+    document.querySelector('.menu-item p:nth-of-type(2)').innerText = `Hot Beverage: ${menu.breakfast.hotBeverage}`;
+    document.querySelector('.menu-item p:nth-of-type(3)').innerText = `Main: ${menu.breakfast.main}`;
+    document.querySelector('.menu-item p:nth-of-type(4)').innerText = `Addons: ${menu.breakfast.addons}`;
+
+    document.querySelectorAll('.lunchtime h4')[0].innerText = "Lunch";
+    document.querySelectorAll('.lunchtime p:nth-of-type(1)')[0].innerText = `Time: ${menu.lunch.time}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(2)')[0].innerText = `Roti: ${menu.lunch.roti}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(3)')[0].innerText = `Rice: ${menu.lunch.rice}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(4)')[0].innerText = `Dal: ${menu.lunch.dal}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(5)')[0].innerText = `Veg1: ${menu.lunch.veg1}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(6)')[0].innerText = `Veg2: ${menu.lunch.veg2}`;
+    document.querySelectorAll('.lunchtime p:nth-of-type(7)')[0].innerText = `Addons: ${menu.lunch.addons}`;
+    
+    document.querySelectorAll('.dinnertime h4')[0].innerText = "Dinner";
+    document.querySelectorAll('.dinnertime p:nth-of-type(1)')[0].innerText = `Time: ${menu.dinner.time}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(2)')[0].innerText = `Roti: ${menu.dinner.roti}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(3)')[0].innerText = `Rice: ${menu.dinner.rice}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(4)')[0].innerText = `Dal: ${menu.dinner.dal}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(5)')[0].innerText = `Non-Veg or Veg: ${menu.dinner.nonVegOrVeg}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(6)')[0].innerText = `Veg: ${menu.dinner.veg}`;
+    document.querySelectorAll('.dinnertime p:nth-of-type(7)')[0].innerText = `Addons: ${menu.dinner.addons}`;
+}
+
+function getCurrentDayOfWeek() {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date();
+    return days[date.getDay()];
+}
+
+// Make the request and render the menu for the current day
+const currentDay = getCurrentDayOfWeek();
+fetchMenu(currentDay).then(renderMenu);
+
+</script>

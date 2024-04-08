@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIITG Mess Management System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 36px;
+        }
+
+
+        .header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .carousel-item img {
+            max-height: 460px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .menu-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">IIITG Mess Management System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+
+                        <% if (!anonymous) { %>
+                            <a class="nav-link" href="/users/dashboard">Dashboard</a>
+                            <a class="nav-link" href="#"  id="openModalBtn">Create Complaints</a>
+                            <a class="nav-link" href="/showMenu">ShowMenu</a>
+                            <!-- <% if (false) { %>
+                                <a class="nav-link" href="/addMenu">Add Menu</a>
+                                <a class="nav-link" href="/addUser">Add Member</a>
+                            <% } %> -->
+                            <a class="nav-link" href="/logout">Logout</a>
+                        <% } else { %>
+                            <a class="nav-link" href="#" id="loginLink">Login</a>
+                            <a class="nav-link" href="#" id="registerLink">Register</a>
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <h1>IIITG Mess Management System</h1>
+        <p>Welcome to the mess management system for Indian Institute of Information Technology Guwahati.</p>
+    </div>
+
+
+    
+
+    <!-- Login Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="loginModalLabel">Login</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<!-- Login form goes here -->
+						<form id="loginForm" method="post" action="/users/login">
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" class="form-control" name="password">
+							</div>
+                            <a class="nav-link" href="#" id="forgotLink">Forgot Password?</a>
+							<br>
+                            <button type="submit" class="btn btn-primary">Login</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<!-- Sign Up form goes here -->
+						<form id="signupForm" method="post" action="/users/signup">
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+									required>
+							</div>
+							<div class="mb-3">
+								<label for="name" class="form-label">Name</label>
+								<input type="text" class="form-control" name="name" required>
+							</div>
+							<div class="mb-3">
+								<label for="rollnumber" class="form-label">Roll Number</label>
+								<input type="text" class="form-control" name="rollnumber" required>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" class="form-control" name="password" required>
+							</div>
+							<div class="mb-3">
+								<label for="confirmPassword" class="form-label">Confirm Password</label>
+								<input type="password" class="form-control" name="confirmPassword" required>
+							</div>
+							<button type="submit" class="btn btn-primary">Sign Up</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Forgot Password Modal -->
+		<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<!-- Forgot Password form goes here -->
+						<form id="forgotPasswordForm"  method="post"  action="/users/forgotPassword">
+							<div class="mb-3">
+								<label for="forgotPasswordEmail" class="form-label">Email address</label>
+								<input type="email" class="form-control" name="email"
+									aria-describedby="emailHelp" required>
+							</div>
+							<button type="submit" class="btn btn-primary">Reset Password</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <script>
+        $(document).ready(function () {
+            // Show the login modal when the login link is clicked
+            $('#loginLink').click(function () {
+                $('#loginModal').modal('show');
+            });
+
+            // Show the register modal when the register link is clicked
+            $('#registerLink').click(function () {
+                $('#signupModal').modal('show');
+            });
+
+            $('#forgotLink').click(function () {
+                $('#loginModal').modal('hide');
+                $('#forgotPasswordModal').modal('show');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

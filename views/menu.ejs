@@ -1,0 +1,220 @@
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #message {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Change Menu</h1>
+        <div>
+            <label for="day">Day:</label>
+            <input type="text" id="day" name="day" placeholder="Enter day (e.g., Monday)" required>
+            <button id="fetchDataBtn">Fetch Data</button>
+        </div>
+        <div>
+            <label for="breakfast-time">Breakfast Time:</label>
+            <input type="text" id="breakfast-time" name="breakfast-time" placeholder="Enter breakfast time" required>
+            <label for="breakfast-hotbeverage">Hot Beverage:</label>
+            <input type="text" id="breakfast-hotbeverage" name="breakfast-hotbeverage" placeholder="Enter hot beverage">
+            <label for="breakfast-addons">Addons:</label>
+            <input type="text" id="breakfast-addons" name="breakfast-addons" placeholder="Enter addons">
+            <label for="breakfast-main">Main:</label>
+            <input type="text" id="breakfast-main" name="breakfast-main" placeholder="Enter main">
+        </div>
+        <div>
+            <label for="lunch-time">Lunch Time:</label>
+            <input type="text" id="lunch-time" name="lunch-time" placeholder="Enter lunch time" required>
+            <label for="lunch-roti">Roti:</label>
+            <input type="text" id="lunch-roti" name="lunch-roti" placeholder="Enter roti">
+            <label for="lunch-rice">Rice:</label>
+            <input type="text" id="lunch-rice" name="lunch-rice" placeholder="Enter rice">
+            <label for="lunch-dal">Dal:</label>
+            <input type="text" id="lunch-dal" name="lunch-dal" placeholder="Enter dal">
+            <label for="lunch-veg1">Veg1:</label>
+            <input type="text" id="lunch-veg1" name="lunch-veg1" placeholder="Enter veg1">
+            <label for="lunch-veg2">Veg2:</label>
+            <input type="text" id="lunch-veg2" name="lunch-veg2" placeholder="Enter veg2">
+            <label for="lunch-addons">Addons:</label>
+            <input type="text" id="lunch-addons" name="lunch-addons" placeholder="Enter addons">
+            <label for="lunch-more">More:</label>
+            <input type="text" id="lunch-more" name="lunch-more" placeholder="Enter more">
+        </div>
+        <div>
+            <label for="dinner-time">Dinner Time:</label>
+            <input type="text" id="dinner-time" name="dinner-time" placeholder="Enter dinner time" required>
+            <label for="dinner-roti">Roti:</label>
+            <input type="text" id="dinner-roti" name="dinner-roti" placeholder="Enter roti">
+            <label for="dinner-rice">Rice:</label>
+            <input type="text" id="dinner-rice" name="dinner-rice" placeholder="Enter rice">
+            <label for="dinner-dal">Dal:</label>
+            <input type="text" id="dinner-dal" name="dinner-dal" placeholder="Enter dal">
+            <label for="dinner-nonVegOrVeg">NonVegOrVeg:</label>
+            <input type="text" id="dinner-nonVegOrVeg" name="dinner-nonVegOrVeg" placeholder="Enter nonVegOrVeg">
+            <label for="dinner-veg">Veg:</label>
+            <input type="text" id="dinner-veg" name="dinner-veg" placeholder="Enter veg">
+            <label for="dinner-addons">Addons:</label>
+            <input type="text" id="dinner-addons" name="dinner-addons" placeholder="Enter addons">
+        </div>
+        <div>
+            <button id="submitBtn">Submit</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script>
+
+        document.getElementById('fetchDataBtn').addEventListener('click', async () => {
+            const day = document.getElementById('day').value;
+            try {
+                const response = await fetch(`http://127.0.0.1:3000/menu/showMenu/${day}`);
+                const data = await response.json();
+                if (!data.success) {
+                    throw new Error(data.message);
+                }
+
+                const menuData = data.data;
+                document.getElementById('breakfast-time').value = menuData.breakfast.time;
+                document.getElementById('breakfast-hotbeverage').value = menuData.breakfast.hotBeverage;
+                document.getElementById('breakfast-addons').value = menuData.breakfast.addons;
+                document.getElementById('breakfast-main').value = menuData.breakfast.main;
+                document.getElementById('lunch-time').value = menuData.lunch.time;
+                document.getElementById('lunch-roti').value = menuData.lunch.roti;
+                document.getElementById('lunch-rice').value = menuData.lunch.rice;
+                document.getElementById('lunch-dal').value = menuData.lunch.dal;
+                document.getElementById('lunch-veg1').value = menuData.lunch.veg1;
+                document.getElementById('lunch-veg2').value = menuData.lunch.veg2;
+                document.getElementById('lunch-addons').value = menuData.lunch.addons;
+                document.getElementById('lunch-more').value = menuData.lunch.more;
+                document.getElementById('dinner-time').value = menuData.dinner.time;
+                document.getElementById('dinner-roti').value = menuData.dinner.roti;
+                document.getElementById('dinner-rice').value = menuData.dinner.rice;
+                document.getElementById('dinner-dal').value = menuData.dinner.dal;
+                document.getElementById('dinner-nonVegOrVeg').value = menuData.dinner.nonVegOrVeg;
+                document.getElementById('dinner-veg').value = menuData.dinner.veg;
+                document.getElementById('dinner-addons').value = menuData.dinner.addons;
+
+                document.getElementById('message').innerText = 'Menu data fetched successfully';
+                document.getElementById('message').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching menu:', error.message);
+                document.getElementById('message').innerText = 'Failed to fetch menu data';
+                document.getElementById('message').style.display = 'block';
+            }
+        });
+
+        document.getElementById('submitBtn').addEventListener('click', async () => {
+            const day = document.getElementById('day').value;
+            const breakfastTime = document.getElementById('breakfast-time').value;
+            const breakfastHotBeverage = document.getElementById('breakfast-hotbeverage').value;
+            const breakfastAddons = document.getElementById('breakfast-addons').value;
+            const breakfastMain = document.getElementById('breakfast-main').value;
+            const lunchTime = document.getElementById('lunch-time').value;
+            const lunchRoti = document.getElementById('lunch-roti').value;
+            const lunchRice = document.getElementById('lunch-rice').value;
+            const lunchDal = document.getElementById('lunch-dal').value;
+            const lunchVeg1 = document.getElementById('lunch-veg1').value;
+            const lunchVeg2 = document.getElementById('lunch-veg2').value;
+            const lunchAddons = document.getElementById('lunch-addons').value;
+            const lunchMore = document.getElementById('lunch-more').value;
+            const dinnerTime = document.getElementById('dinner-time').value;
+            const dinnerRoti = document.getElementById('dinner-roti').value;
+            const dinnerRice = document.getElementById('dinner-rice').value;
+            const dinnerDal = document.getElementById('dinner-dal').value;
+            const dinnerNonVegOrVeg = document.getElementById('dinner-nonVegOrVeg').value;
+            const dinnerVeg = document.getElementById('dinner-veg').value;
+            const dinnerAddons = document.getElementById('dinner-addons').value;
+
+            const payload = {
+                day: day,
+                breakfast: {
+                    time: breakfastTime,
+                    hotBeverage: breakfastHotBeverage,
+                    addons: breakfastAddons,
+                    main: breakfastMain
+                },
+                lunch: {
+                    time: lunchTime,
+                    roti: lunchRoti,
+                    rice: lunchRice,
+                    dal: lunchDal,
+                    veg1: lunchVeg1,
+                    veg2: lunchVeg2,
+                    addons: lunchAddons,
+                    more: lunchMore
+                },
+                dinner: {
+                    time: dinnerTime,
+                    roti: dinnerRoti,
+                    rice: dinnerRice,
+                    dal: dinnerDal,
+                    nonVegOrVeg: dinnerNonVegOrVeg,
+                    veg: dinnerVeg,
+                    addons: dinnerAddons
+                }
+            };
+
+            try {
+                const response = await fetch(`/menu/changeMenu/${day}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getCookie('jwt')}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                console.log(data);
+                document.getElementById('message').innerText = 'Menu changed successfully';
+                document.getElementById('message').style.display = 'block';
+            } catch (error) {
+                console.error('Error changing menu:', error);
+                document.getElementById('message').innerText = 'Failed to change menu';
+                document.getElementById('message').style.display = 'block';
+            }
+        });
+        
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName.trim() === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+    </script>
+</body>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.menu-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.menu-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.menu-item p {
+    margin: 0;
+    color: #666;
+}
+
+</style>
+<body>
+    <%- include("partials/header") -%>
+    <h1 style="padding: 0 45%;">WeeklyMenu</h1>
+<div class="menu-container" id="menu-container"></div>
+
+<script>
+const menuContainer = document.getElementById('menu-container');
+
+fetch('/menu/showMenu')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const menuData = data.data;
+
+            // Sort the menu items by day
+            menuData.sort((a, b) => {
+                const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                return daysOfWeek.indexOf(a.day) - daysOfWeek.indexOf(b.day);
+            });
+
+            // Render the sorted menu items
+            menuData.forEach(menu => {
+                const menuDiv = document.createElement('div');
+                menuDiv.classList.add('menu-item');
+
+                const dayHeader = document.createElement('h3');
+                dayHeader.textContent = menu.day;
+                menuDiv.appendChild(dayHeader);
+
+                const breakfast = document.createElement('p');
+                breakfast.textContent = `Breakfast: ${menu.breakfast.time} - ${menu.breakfast.hotBeverage}, ${menu.breakfast.main}, ${menu.breakfast.addons}`;
+                menuDiv.appendChild(breakfast);
+
+                const lunch = document.createElement('p');
+                lunch.textContent = `Lunch: ${menu.lunch.time} - ${menu.lunch.roti}, ${menu.lunch.rice}, ${menu.lunch.dal}, ${menu.lunch.veg1}, ${menu.lunch.veg2}, ${menu.lunch.addons}, ${menu.lunch.more}`;
+                menuDiv.appendChild(lunch);
+
+                const dinner = document.createElement('p');
+                dinner.textContent = `Dinner: ${menu.dinner.time} - ${menu.dinner.roti}, ${menu.dinner.rice}, ${menu.dinner.dal}, ${menu.dinner.nonVegOrVeg}, ${menu.dinner.veg}, ${menu.dinner.addons}`;
+                menuDiv.appendChild(dinner);
+
+                menuContainer.appendChild(menuDiv);
+            });
+        } else {
+            console.error('Failed to fetch menu:', data.error);
+        }
+    })
+    .catch(error => console.error('Error fetching menu:', error));
+
+</script>
+</body>
+</html>
