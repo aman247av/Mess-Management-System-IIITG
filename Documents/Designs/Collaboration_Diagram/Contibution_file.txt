@@ -1,0 +1,31 @@
+Contribution Summary - Collaboration Diagrams
+
+Abhishek Kumar (2101012):
+
+Developed collaboration diagrams from the existing sequential diagrams.
+Ensured that the collaboration diagrams accurately represented the interactions between system components.
+Reviewed and refined the collaboration diagrams for clarity and coherence.
+Assisted in integrating collaboration diagrams into the Software Requirements Specification (SRS) document.
+
+
+Aman Verma (2101031):
+
+Conducted research and gathered additional information for enhancing the collaboration diagrams.
+Contributed to structuring the collaboration diagrams to effectively illustrate system interactions.
+Verified the accuracy and consistency of the collaboration diagrams.
+Assisted in integrating the collaboration diagrams into the SRS document.
+
+
+Aman Soni (2101029):
+
+Collaborated in converting the sequential diagrams into collaboration diagrams.
+Provided insights and suggestions for improving the visual representation of system interactions.
+Reviewed the collaboration diagrams to ensure they aligned with the requirements outlined in the SRS document.
+Participated in discussions to refine the collaboration diagrams and address any discrepancies.
+
+
+Overall, each member played a vital role in transforming the sequential diagrams into collaboration diagrams, ensuring they accurately reflected the system's behavior and contributed to the completion of the assignment.
+
+
+
+
