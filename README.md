@@ -1,25 +1,61 @@
-# Mess-Management-System-IIITG
+# Mess Management System (MMS) - IIIT Guwahati
 
-This project aims to streamline and enhance mess-related processes within an educational institution. Developed by Abhishek Kumar, Aman Soni, and Aman Verma, the Mess Management System facilitates efficient communication, complaint resolution, and menu management for students, mess committee members, and faculty. The system features user-friendly interfaces, QR-based complaint registration, real-time menu display, and role-based access control. With future plans for transaction integration, automated notifications, and a feedback system, the Mess Management System prioritizes transparency, efficiency, and user satisfaction.
+The Mess Management System is a sophisticated software solution designed to digitize the dining experience within IIIT Guwahati. This project encapsulates functionalities that are critical to the institution's mess operations, aiming to elevate the management and student interaction with the mess facility.
 
-*Key Features:*
-- QR-Based Complaint Registration
-- Real-time Mess Menu Display
-- Role-Based Access Control
-- Future Integration for Transactions and Notifications
+## Key Features
 
-*Technologies Used:*
-- Frontend: HTML, CSS, JavaScript, React
-- Backend: Node.js, Express.js
-- Database: MySQL + MongoDB
-- Security: HTTPS, JWT (JSON Web Token) or Google Auth
+- **User Authentication:** Robust login system with secure access for students, faculty, and staff, incorporating roles and permissions.
+- **Complaint Management:** Intuitive portal for lodging and tracking complaints, enhancing accountability and responsiveness.
+- **Menu Display:** Dynamic and real-time display of mess menus, allowing for timely updates and user engagement.
+- **Feedback Mechanism:** A platform for students to provide feedback on meals, contributing to continuous improvement in service quality.
 
-*System Requirements:*
-- Operating System: Windows, macOS, Linux
-- Web Browser: Latest versions of major browsers
-- Database Management: MySQL + MongoDB
-- Server: Node.js, Express.js
+## Technical Overview
 
-*Evolutionary Model Overview:*
-The project follows an Evolutionary Model, with iterative development cycles driven by continuous feedback from stakeholders. The process involves delivering incremental versions, eliciting customer feedback, incorporating suggestions, and delivering a refined final version. The model ensures adaptability to evolving requirements and promotes reduced planning overhead, aligning with agile development practices.
+This project is built using a modern tech stack, ensuring a seamless user experience and efficient backend management:
 
+- **Frontend:** The user interface is crafted with React.js, providing a responsive and interactive experience.
+- **Backend:** Node.js serves as the runtime environment with Express.js framework managing the server and routing.
+- **Database:** Data persistence is achieved using MySQL for structured data, ensuring integrity and efficient querying.
+- **Security:** Implemented with JWT for authentication, ensuring secure user sessions and data transactions.
+- **Cloud Integration:** Cloudinary is utilized for file storage, specifically for complaint documentation.
+
+## Installation and Setup
+
+To get the Mess Management System up and running on your local machine, please follow the instructions in our [Installation Guide](/INSTALL.md).
+
+## Documentation
+
+For a deep dive into the functionalities and design of the MMS, refer to the [Software Requirements Specification (SRS)](/Documents/SRS_V3.pdf) and the [Design Documents](/Documents/).
+
+## Contribution
+
+We welcome contributions of all forms. If you have suggestions or want to contribute to the project, please read our [Contribution Guidelines](/CONTRIBUTING.md).
+
+## Versioning
+
+We use semantic versioning for our project. For the versions available, see the [tags on this repository](https://github.com/aman247av/Mess-Management-System-IIITG/tags).
+
+## Team
+
+- **Aman Verma** - Primary work on User Features
+- **Abhishek Kumar** - Focus on Complaints Functionality
+- **Aman Soni** - Development of Menu Data Management
+
+For the complete list of contributors who participated in this project, visit the [contributors section](https://github.com/aman247av/Mess-Management-System-IIITG/contributors).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Gratitude to the IIIT Guwahati community for their invaluable feedback.
+- Thanks to the open-source projects that provided the foundational tools for development.
+
+## Contact
+
+For queries or further information, please contact us at [info@iiitg.ac.in](mailto:info@iiitg.ac.in).
+
+---
+
+The Mess Management System stands as a testament to the collaborative effort of IIIT Guwahati's vibrant community, reflecting a blend of technological innovation and a commitment to improving campus life.
