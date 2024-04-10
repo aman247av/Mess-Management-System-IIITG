@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Library Boundary
+    participant Library Book Renewal Controller
+    participant Library Book Register
+    participant Library Member
+    participant Book
+    Library Boundary->>Library Book Renewal Controller: renewBook
+    Library Book Renewal Controller->>Library Member: findMemberBorrowing
+    Library Book Renewal Controller->>Library Book Register: * find
+    Library Book Register->>Library Book Renewal Controller: :Book
+    Library Book Renewal Controller->>Library Book Renewal Controller: selectBooks
+    Library Book Renewal Controller->>Library Boundary: display Borrowing
+    Library Boundary->>Library Book Renewal Controller: book Selected
+    alt reserved
+        Library Book Renewal Controller->>Library Member: apology
+    else 
+        Library Book Renewal Controller->>Library Book Register: update
+        Library Book Register->>Library Book Renewal Controller: confirm
+        Library Book Renewal Controller->>Library Member: updateMemberBorrowing
+        Library Book Renewal Controller->>Library Boundary: confirm
+    end

@@ -1,0 +1,103 @@
+sequenceDiagram
+    participant Student
+    participant Mess_Menu_Details
+    participant Complaint_Portal
+    participant Mess_Meeting_Controller
+    participant PersonalInfo
+    participant Faculty
+    participant MessCommitteeMember
+    participant ConcernedAuthority
+    participant Logs
+    participant AuthenticationSystem
+
+    Student->>+AuthenticationSystem: Authenticate
+    activate AuthenticationSystem
+    AuthenticationSystem->>+Database: Validate credentials
+    activate Database
+    Database-->>-AuthenticationSystem: Response
+    deactivate Database
+    alt Valid credentials
+        AuthenticationSystem-->>-Student: Grant access
+    else Invalid credentials
+        AuthenticationSystem-->>-Student: Error message
+    end
+    
+
+    Student->>+Mess_Menu_Details: Retrieve Mess Menu data (1)
+    activate Mess_Menu_Details
+    Mess_Menu_Details-->>-Student: Mess Menu data (2)
+    deactivate Mess_Menu_Details
+
+    Student->>+Complaint_Portal: Store Complaint Details (3)
+    activate Complaint_Portal
+    Complaint_Portal->>Complaint_Portal: Generate Unique Complaint ID (4)
+    Complaint_Portal-->>-Student: Complaint ID (5)
+    deactivate Complaint_Portal
+
+    Student->>Complaint_Portal: Retrieve Complaint Status (6)
+    activate Complaint_Portal
+    Complaint_Portal-->>Student: Complaint Status (7)
+    deactivate Complaint_Portal
+
+    Student->>Mess_Menu_Details: Retrieve Mess Timings & Venue data (8)
+    activate Mess_Menu_Details
+    Mess_Menu_Details-->>Student: Mess Timings & Venue data (9)
+    deactivate Mess_Menu_Details
+
+    Student->>PersonalInfo: Retrieve Personal Information data (10)
+    activate PersonalInfo
+    PersonalInfo-->>Student: Personal Information data (11)
+    deactivate PersonalInfo
+
+    Faculty->>Mess_Meeting_Controller: Store Meeting Details (12)
+    activate Mess_Meeting_Controller
+    Mess_Meeting_Controller-->>MessCommitteeMember: Send Notifications to Mess Committee Members (13)
+    deactivate Mess_Meeting_Controller
+
+    MessCommitteeMember->>Mess_Menu_Details: Update Mess Menu data (14)
+    activate Mess_Menu_Details
+    Mess_Menu_Details-->>Faculty: Mess Menu Updated Successfully
+    deactivate Mess_Menu_Details
+
+    MessCommitteeMember->>Complaint_Portal: Retrieve Complaint data (15)
+    activate Complaint_Portal
+    Complaint_Portal-->>MessCommitteeMember: Complaint data (16)
+    deactivate Complaint_Portal
+
+    MessCommitteeMember->>Complaint_Portal: Update Complaint Status to resolved/unresolved (17)
+    activate Complaint_Portal
+    Complaint_Portal-->>Faculty: Send unresolved Complaint to Faculty (18)
+    deactivate Complaint_Portal
+
+    Faculty->>ConcernedAuthority: Send unresolved Complaints to concerned auth via Email (19)
+    activate ConcernedAuthority
+    ConcernedAuthority-->>Faculty: Reply (20)
+    deactivate ConcernedAuthority
+
+    Faculty->>Mess_Menu_Details: Update Mess Menu data (21)
+    activate Mess_Menu_Details
+    Mess_Menu_Details-->Faculty: Mess Menu Updated Successfully 
+    deactivate Mess_Menu_Details
+
+    Faculty->>Database: Display User Accounts (22)
+    activate Database
+    Database-->>Faculty: User Accounts Retrieved (23)
+    deactivate Database
+
+    Faculty->>Faculty: Select User Account (24)
+    Faculty->>Database: Update User Account data (25)
+    activate Database
+    Database-->>Faculty: User Account Updated Successfully (26)
+    deactivate Database
+
+    Faculty->>Faculty: Prompt for Role (27)
+    Faculty->>Faculty: Enter Role (28)
+    Faculty->>Database: Update Student's Role (29)
+    activate Database
+    Database-->>Faculty: Role Updated Successfully (30)
+    deactivate Database
+
+    Faculty->>Logs: Retrieve Log Data (31)
+    activate Logs
+    Logs-->>Faculty: Log Data Retrieved (32)
+    deactivate Logs
