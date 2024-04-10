@@ -63,7 +63,7 @@ This repository documents the series of lab assignments completed as part of the
 
 * **Objective:** Submit the complete implemented project.
 * **Details:** Include all project files, codes, screenshots, database files, and the final SRS document.
-* **Final SRS:** `Final_SRS_Document.pdf`
+* **Final SRS:** `Final_SRS_V3.pdf`
 * **Contribution File:** `Final_Project_Contribution.txt`
 
 ---
