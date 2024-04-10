@@ -1,0 +1,20 @@
+Contribution File: Team Assignment
+
+Abhishek Kumar (2101012):
+
+Contributed to the transformation of DFD into the Structure Chart.
+Implemented strategies for effective module design.
+Incorporated conditions and loops as needed.
+Provided explanations for the chosen design elements.
+
+Aman Soni (2101029):
+Worked on the Structure Chart generation from the DFD.
+Focused on optimizing data and control flows within the chart.
+Ensured alignment with project requirements and specifications.
+Detailed insights into the design considerations.
+
+Aman Verma (2101031):
+Contributed significantly to the overall project design.
+Assisted in the formulation of conditions and loops.
+Checked and ensured the consistency of the Structure Chart with the DFD.
+Addressed challenges in the transformation process.
