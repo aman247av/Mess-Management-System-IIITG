@@ -25,7 +25,7 @@ To get the Mess Management System up and running on your local machine, please f
 
 ## Documentation
 
-For a deep dive into the functionalities and design of the MMS, refer to the [Software Requirements Specification (SRS)](/Documents/SRS_V3.pdf) and the [Design Documents](/Documents/).
+For a deep dive into the functionalities and design of the MMS, refer to the [Software Requirements Specification (SRS)](/Documents/Final_SRS_V3.pdf) and the [Design Documents](/Documents/).
 
 ## Contribution
 
