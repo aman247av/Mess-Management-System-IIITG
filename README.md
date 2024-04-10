@@ -54,7 +54,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For queries or further information, please contact us at [info@iiitg.ac.in](mailto:info@iiitg.ac.in).
+For queries or further information, please contact us at 
+[abhisheksingh0932348@gmail.com](mailto:abhisheksingh0932348@gmail.com).
+[vermaman247@gmail.com](mailto:vermaman247@gmail.com).
 
 ---
 
