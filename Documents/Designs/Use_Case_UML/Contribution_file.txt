@@ -1,0 +1,25 @@
+Team Members:
+Abhishek Kumar (Roll No. : 2101012)
+Aman Verma (Roll No. : 2101031)
+Aman Soni (Roll No. : 2101029)
+
+
+Contributions:
+
+Abhishek Kumar:
+Identified the actors and their interactions with the system.
+Defined the use cases for each actor.
+Created the initial draft of the Use Case UML diagram.
+
+Aman Verma:
+Reviewed and refined the use cases.
+Added the necessary relationships between the use cases.
+Finalized the Use Case UML diagram.
+
+
+Aman Soni:
+Provided feedback on the Use Case UML diagram.
+Ensured that the diagram adhered to the UML standards.
+Documented the contributions of each team member.
+
+Overall, all team members contributed equally to the creation of the Use Case UML diagram.
