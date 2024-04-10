@@ -10,7 +10,7 @@ Each member of our team has brought unique skills and focus areas to this projec
 - **Abhishek Kumar** has contributed significantly to the complaint management system, from the filing of complaints to their assignment and tracking.
 - **Aman Soni** has played a vital role in menu data management, from creation to real-time updates, ensuring that meal offerings are up-to-date and accurately represented.
 
-Detailed descriptions of each member’s contributions can be found in the `docs/contributions` directory.
+Detailed descriptions of each member’s contributions can be found in the `document/contributions` directory.
 
 ## How to Contribute
 
