@@ -15,7 +15,7 @@ This project is built using a modern tech stack, ensuring a seamless user experi
 
 - **Frontend:** The user interface is crafted with React.js, providing a responsive and interactive experience.
 - **Backend:** Node.js serves as the runtime environment with Express.js framework managing the server and routing.
-- **Database:** Data persistence is achieved using MySQL for structured data, ensuring integrity and efficient querying.
+- **Database:** Data persistence is achieved using MongoDB for structured data, ensuring integrity and efficient querying.
 - **Security:** Implemented with JWT for authentication, ensuring secure user sessions and data transactions.
 - **Cloud Integration:** Cloudinary is utilized for file storage, specifically for complaint documentation.
 
