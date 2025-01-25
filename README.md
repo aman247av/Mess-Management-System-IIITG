@@ -35,10 +35,10 @@ We welcome contributions of all forms. If you have suggestions or want to contri
 
 We use semantic versioning for our project. For the versions available, see the [tags on this repository](https://github.com/aman247av/Mess-Management-System-IIITG/tags).
 
-## Team
-
-- **Aman Verma** - Primary work on User Features
-- **Abhishek Kumar** - Focus on Complaints Functionality
+## Team  
+- **Ayushi Verma** - Led the overall Agile methodology and sprint management  
+- **Aman Verma** - Primary work on User Features  
+- **Abhishek Kumar** - Focus on Complaints Functionality  
 - **Aman Soni** - Development of Menu Data Management
 
 For the complete list of contributors who participated in this project, visit the [contributors section](https://github.com/aman247av/Mess-Management-System-IIITG/contributors).
