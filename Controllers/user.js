@@ -33,6 +33,12 @@ const setJwtCookieAndSendResponse = (res, statusCode, msg, user) => {
 
 exports.signup = async (req, res) => {
   try {
+    if(req.body.email.split('@')[1] !== 'iiitg.ac.in') {
+      return res.status(400).json({
+        message: "Please use your IIITG email to register.",
+      });
+    }
+
     const existingUser = await User.findOne({
       $or: [
           { email: req.body.email },
@@ -118,6 +124,7 @@ exports.forgotPassword = async (req, res) => {
   // You need to implement this function
   try {
       const resetURL = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetToken}`;
+      console.log(resetURL);
       const message = `We have recieved a password rest request. Please use the below link to reset yout password\n\n${resetURL}\n\n This link will be valid for next 10 minutes only.`
 
       await sendEmail({
